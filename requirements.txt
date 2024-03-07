@@ -1,0 +1,4 @@
+requests
+pytest
+selene
+webdriver-manager==4.0.1
