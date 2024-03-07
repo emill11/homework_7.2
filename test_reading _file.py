@@ -1,8 +1,16 @@
 import csv
+
 from pypdf import PdfReader
 import zipfile
 from openpyxl import load_workbook
 import os
+from zipfile import ZipFile
+import shutil
+
+with ZipFile("resources/zip.zip", 'w') as zip_file:
+    zip_file.write("resources/xlsx.xlsx")
+    zip_file.write("resources/pdf.pdf")
+    zip_file.write("resources/users.csv")
 
 
 def test_csv():
@@ -40,3 +48,6 @@ def test_xlsx():
     name = sheet.cell_value = sheet['B2'].value
 
     assert name == 'тест 1'
+
+    os.remove('resources/zip.zip')
+    shutil.rmtree('tmp')
